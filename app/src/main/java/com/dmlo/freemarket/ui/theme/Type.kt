@@ -19,7 +19,7 @@ val Typography = Typography(
     )
 )
 
-val cardTitle: TextStyle
+val cardTitleTypo: TextStyle
     @Composable
     get() {
         return TextStyle(
@@ -29,17 +29,17 @@ val cardTitle: TextStyle
         )
     }
 
-val price: TextStyle
+val priceTypo: TextStyle
     @Composable
     get() {
         return TextStyle(
-            fontWeight = FontWeight.Normal,
+            fontWeight = FontWeight.Bold,
             fontSize = 14.sp,
             letterSpacing = 0.15.sp
         )
     }
 
-val originalPrice: TextStyle
+val originalPriceTypo: TextStyle
     @Composable
     get() {
         return TextStyle(
@@ -50,7 +50,7 @@ val originalPrice: TextStyle
         )
     }
 
-val installment: TextStyle
+val installmentTypo: TextStyle
     @Composable
     get() {
         return TextStyle(
@@ -60,7 +60,7 @@ val installment: TextStyle
         )
     }
 
-val tag: TextStyle
+val tagTypo: TextStyle
     @Composable
     get() {
         return TextStyle(

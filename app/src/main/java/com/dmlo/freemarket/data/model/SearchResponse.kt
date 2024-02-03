@@ -1,6 +1,7 @@
 package com.dmlo.freemarket.data.model
 
 import com.google.gson.annotations.SerializedName
+import java.math.BigDecimal
 
 class SearchResponse(
     @SerializedName("site_id") val siteId: String,
@@ -19,9 +20,9 @@ class PagingResponse(
 class ProductResponse(
     @SerializedName("id") val id: String,
     @SerializedName("title") val title: String,
-    @SerializedName("price") val price: Double,
-    @SerializedName("original_price") val originalPrice: Double?,
-    @SerializedName("sale_price") val salePrice: Double?,
+    @SerializedName("price") val price: BigDecimal,
+    @SerializedName("original_price") val originalPrice: BigDecimal?,
+    @SerializedName("sale_price") val salePrice: BigDecimal?,
     @SerializedName("available_quantity") val availableQuantity: Int,
     @SerializedName("condition") val condition: String,
     @SerializedName("thumbnail") val thumbnail: String,
@@ -32,7 +33,7 @@ class ProductResponse(
 class InstallmentResponse(
     @SerializedName("quantity") val quantity: Int,
     @SerializedName("rate") val rate: Int,
-    @SerializedName("amount") val amount: Double,
+    @SerializedName("amount") val amount: BigDecimal,
     @SerializedName("currency_id") val currencyId: String
 )
 

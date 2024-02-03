@@ -4,6 +4,7 @@ import com.dmlo.freemarket.data.model.InstallmentResponse
 import com.dmlo.freemarket.data.model.PagingResponse
 import com.dmlo.freemarket.data.model.ProductResponse
 import com.dmlo.freemarket.data.model.SearchResponse
+import java.math.BigDecimal
 
 class Search(
     val siteId: String,
@@ -36,9 +37,9 @@ class Paging(
 class Product(
     val id: String,
     val title: String,
-    val price: Double,
-    val originalPrice: Double?,
-    val salePrice: Double?,
+    val price: BigDecimal,
+    val originalPrice: BigDecimal?,
+    val salePrice: BigDecimal?,
     val availableQuantity: Int,
     val condition: String,
     val thumbnail: String,
@@ -62,7 +63,7 @@ class Product(
 class Installment(
     val quantity: Int,
     val rate: Int,
-    val amount: Double,
+    val amount: BigDecimal,
     val currencyId: String
 ) {
     constructor(response: InstallmentResponse) : this(

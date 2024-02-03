@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">Free Market</string>
     <string name="title_activity_main">MainActivity</string>
+
+    <string name="new_item">Novo</string>
+    <string name="free_shipping">Frete grátis</string>
+    <string name="installment_condition">em %1$dx de %2$s</string>
+
+    <plurals name="quantity_alert">
+        <item quantity="one">Último item</item>
+        <item quantity="other">Últimos itens</item>
+    </plurals>
 </resources>
