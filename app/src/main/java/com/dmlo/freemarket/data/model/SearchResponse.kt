@@ -5,11 +5,11 @@ import com.google.gson.annotations.SerializedName
 class SearchResponse(
     @SerializedName("site_id") val siteId: String,
     @SerializedName("query") val query: String?,
-    @SerializedName("paging") val paging: Paging,
+    @SerializedName("paging") val paging: PagingResponse,
     @SerializedName("results") val results: List<ProductResponse>
 )
 
-class Paging(
+class PagingResponse(
     @SerializedName("total") val total: Int,
     @SerializedName("offset") val offset: Int,
     @SerializedName("limit") val limit: Int,
@@ -19,9 +19,9 @@ class Paging(
 class ProductResponse(
     @SerializedName("id") val id: String,
     @SerializedName("title") val title: String,
-    @SerializedName("price") val price: Int,
-    @SerializedName("original_price") val originalPrice: Int?,
-    @SerializedName("sale_price") val salePrice: Int?,
+    @SerializedName("price") val price: Double,
+    @SerializedName("original_price") val originalPrice: Double?,
+    @SerializedName("sale_price") val salePrice: Double?,
     @SerializedName("available_quantity") val availableQuantity: Int,
     @SerializedName("condition") val condition: String,
     @SerializedName("thumbnail") val thumbnail: String,
@@ -32,7 +32,7 @@ class ProductResponse(
 class InstallmentResponse(
     @SerializedName("quantity") val quantity: Int,
     @SerializedName("rate") val rate: Int,
-    @SerializedName("amount") val amount: Int,
+    @SerializedName("amount") val amount: Double,
     @SerializedName("currency_id") val currencyId: String
 )
 

@@ -19,7 +19,7 @@ val Typography = Typography(
     )
 )
 
-val Typography.cardTitle: TextStyle
+val cardTitle: TextStyle
     @Composable
     get() {
         return TextStyle(
@@ -29,7 +29,7 @@ val Typography.cardTitle: TextStyle
         )
     }
 
-val Typography.price: TextStyle
+val price: TextStyle
     @Composable
     get() {
         return TextStyle(
@@ -39,7 +39,7 @@ val Typography.price: TextStyle
         )
     }
 
-val Typography.originalPrice: TextStyle
+val originalPrice: TextStyle
     @Composable
     get() {
         return TextStyle(
@@ -50,7 +50,7 @@ val Typography.originalPrice: TextStyle
         )
     }
 
-val Typography.installment: TextStyle
+val installment: TextStyle
     @Composable
     get() {
         return TextStyle(
@@ -60,7 +60,7 @@ val Typography.installment: TextStyle
         )
     }
 
-val Typography.tag: TextStyle
+val tag: TextStyle
     @Composable
     get() {
         return TextStyle(
