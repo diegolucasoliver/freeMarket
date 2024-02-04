@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.dmlo.freemarket.ui.MainViewModel
+import com.dmlo.freemarket.ui.screen.DescriptionScreen
 import com.dmlo.freemarket.ui.screen.ResultsScreen
 import com.dmlo.freemarket.ui.screen.SearchScreen
 
@@ -60,7 +61,13 @@ fun Navigation(viewModel: MainViewModel) {
                 }
             )
         ) { entry ->
-            val productId = entry.arguments?.getString(PRODUCT_ID)
+            val productId = entry.arguments?.getString(PRODUCT_ID).orEmpty()
+
+            DescriptionScreen(
+                navController = navController,
+                itemId = productId,
+                viewModel = viewModel
+            )
         }
 
     }

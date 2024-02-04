@@ -19,7 +19,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -54,7 +54,8 @@ fun SearchScreen(navController: NavController) {
                 .fillMaxSize(),
             verticalArrangement = Arrangement.Center
         ) {
-            var item by remember { mutableStateOf("") }
+            var item by rememberSaveable { mutableStateOf("") }
+
             OutlinedTextField(
                 modifier = Modifier.fillMaxWidth(),
                 value = item,
@@ -68,7 +69,10 @@ fun SearchScreen(navController: NavController) {
                     keyboardController?.hide()
                 }),
                 trailingIcon = {
-                    IconButton(onClick = { navController.navigate(Screen.Results.withArgs(item)) }) {
+                    IconButton(onClick = {
+                        navController.navigate(Screen.Results.withArgs(item))
+                        keyboardController?.hide()
+                    }) {
                         Icon(
                             imageVector = Icons.Default.Search,
                             contentDescription = "Ícone de lupa"

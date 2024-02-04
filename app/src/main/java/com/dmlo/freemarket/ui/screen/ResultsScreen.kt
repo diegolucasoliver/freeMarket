@@ -19,7 +19,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -45,15 +45,15 @@ fun ResultsScreen(
     val uiState by viewModel.itemsUiState.collectAsState()
 
     LaunchedEffect(Unit) {
-        viewModel.searchItems(query)
+        viewModel.fetchItems(query)
     }
 
     ResultsContentSetup(
         query = query,
         navController = navController,
         uiState = uiState,
-        search = { viewModel.searchItems(it) },
-        retry = { viewModel.searchItems(query) }
+        search = { viewModel.fetchItems(it) },
+        retry = { viewModel.fetchItems(query) }
     )
 }
 
@@ -73,7 +73,7 @@ fun ResultsContentSetup(
         topBar = {
             CustomTopAppBar(
                 title = {
-                    var item by remember { mutableStateOf(query) }
+                    var item by rememberSaveable { mutableStateOf(query) }
                     OutlinedTextField(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -91,6 +91,7 @@ fun ResultsContentSetup(
                         trailingIcon = {
                             IconButton(onClick = {
                                 search(item)
+                                keyboardController?.hide()
                             }) {
                                 Icon(
                                     imageVector = Icons.Default.Search,
