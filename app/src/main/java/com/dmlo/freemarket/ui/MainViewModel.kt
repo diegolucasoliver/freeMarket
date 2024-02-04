@@ -4,10 +4,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dmlo.freemarket.repository.DescriptionRepository
 import com.dmlo.freemarket.repository.ItemsRepository
-import com.dmlo.freemarket.ui.model.ProductDescription
-import com.dmlo.freemarket.ui.model.Search
+import com.dmlo.freemarket.repository.model.ProductDescription
+import com.dmlo.freemarket.repository.model.Search
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 
 class MainViewModel(
@@ -32,14 +33,13 @@ class MainViewModel(
         viewModelScope.launch {
             _itemsUiState.value = FreeMarketUiState.Loading
 
-            try {
-                searchRepository.fecthItems(query)
-                    .collect { items ->
-                        _itemsUiState.value = FreeMarketUiState.Success(items)
-                    }
-            } catch (e: Throwable) {
-                _itemsUiState.value = FreeMarketUiState.Error(e)
-            }
+            searchRepository.fecthItems(query)
+                .catch { e ->
+                    _itemsUiState.value = FreeMarketUiState.Error(e)
+                }
+                .collect { items ->
+                    _itemsUiState.value = FreeMarketUiState.Success(items)
+                }
         }
     }
 
@@ -47,21 +47,20 @@ class MainViewModel(
         viewModelScope.launch {
             _descriptionUiState.value = FreeMarketUiState.Loading
 
-            try {
-                descriptionRepository.fetchDescription(itemId)
-                    .collect { description ->
-                        _descriptionUiState.value = FreeMarketUiState.Success(description)
-                    }
-            } catch (e: Throwable) {
-                _descriptionUiState.value = FreeMarketUiState.Error(e)
-            }
+            descriptionRepository.fetchDescription(itemId)
+                .catch { e ->
+                    _descriptionUiState.value = FreeMarketUiState.Error(e)
+                }
+                .collect { description ->
+                    _descriptionUiState.value = FreeMarketUiState.Success(description)
+                }
 
         }
     }
 }
 
 sealed class FreeMarketUiState<out T> {
-    object Loading : FreeMarketUiState<Nothing>()
+    data object Loading : FreeMarketUiState<Nothing>()
     data class Success<T>(val data: T) : FreeMarketUiState<T>()
     data class Error(val t: Throwable) : FreeMarketUiState<Nothing>()
 }

@@ -15,8 +15,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.dmlo.freemarket.ui.model.ProductDescription
-import com.dmlo.freemarket.ui.model.Snapshot
+import com.dmlo.freemarket.repository.model.ProductDescription
+import com.dmlo.freemarket.repository.model.Snapshot
 import com.dmlo.freemarket.ui.theme.FreeMarketTheme
 import com.dmlo.freemarket.ui.theme.installmentTypo
 

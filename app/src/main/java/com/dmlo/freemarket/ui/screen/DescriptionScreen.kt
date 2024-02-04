@@ -17,7 +17,7 @@ import androidx.navigation.NavController
 import com.dmlo.freemarket.ui.FreeMarketUiState
 import com.dmlo.freemarket.ui.MainViewModel
 import com.dmlo.freemarket.ui.components.CustomTopAppBar
-import com.dmlo.freemarket.ui.model.ProductDescription
+import com.dmlo.freemarket.repository.model.ProductDescription
 import com.dmlo.freemarket.ui.screen.description.DescriptionContent
 import com.dmlo.freemarket.ui.screen.description.DescriptionError
 

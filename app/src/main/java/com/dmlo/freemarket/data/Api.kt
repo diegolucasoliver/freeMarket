@@ -2,7 +2,6 @@ package com.dmlo.freemarket.data
 
 import com.dmlo.freemarket.data.model.ProductDescriptionResponse
 import com.dmlo.freemarket.data.model.SearchResponse
-import kotlinx.coroutines.flow.Flow
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

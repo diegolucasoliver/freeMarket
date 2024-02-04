@@ -13,7 +13,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.dmlo.freemarket.routing.Screen
 import com.dmlo.freemarket.ui.components.ProductCard
-import com.dmlo.freemarket.ui.model.Search
+import com.dmlo.freemarket.repository.model.Search
 
 @Composable
 fun ResultsContent(navController: NavController, data: Search, innerPadding: PaddingValues) {

@@ -19,8 +19,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.dmlo.freemarket.R
-import com.dmlo.freemarket.ui.model.Installment
-import com.dmlo.freemarket.ui.model.Product
+import com.dmlo.freemarket.repository.model.Installment
+import com.dmlo.freemarket.repository.model.Product
 import com.dmlo.freemarket.ui.theme.FreeMarketTheme
 import com.dmlo.freemarket.ui.theme.Shapes
 import com.dmlo.freemarket.ui.theme.cardTitleTypo
@@ -154,15 +154,12 @@ fun ProductCardPreview() {
                 title = "Console Nintendo Switch Lite 32gb Turquesa",
                 price = BigDecimal("1199.0"),
                 originalPrice = BigDecimal("1362.5"),
-                salePrice = null,
                 availableQuantity = 5,
                 condition = "new",
                 thumbnail = "http://http2.mlstatic.com/D_719738-MLU72566278420_112023-I.jpg",
                 installments = Installment(
                     quantity = 10,
                     amount = BigDecimal("119.9"),
-                    rate = 0.0,
-                    currencyId = "BRL"
                 ),
                 freeShipping = true
             )
