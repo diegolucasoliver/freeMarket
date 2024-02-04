@@ -19,7 +19,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.dmlo.freemarket.R
-import com.dmlo.freemarket.formatToMoney
+import com.dmlo.freemarket.utils.formatToMoney
 import com.dmlo.freemarket.ui.model.Installment
 import com.dmlo.freemarket.ui.model.Product
 import com.dmlo.freemarket.ui.theme.FreeMarketTheme

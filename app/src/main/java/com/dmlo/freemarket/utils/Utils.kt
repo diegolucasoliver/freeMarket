@@ -1,4 +1,4 @@
-package com.dmlo.freemarket
+package com.dmlo.freemarket.utils
 
 import java.math.BigDecimal
 import java.math.RoundingMode
