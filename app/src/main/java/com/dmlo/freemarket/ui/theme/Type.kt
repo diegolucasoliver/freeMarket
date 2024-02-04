@@ -29,6 +29,16 @@ val cardTitleTypo: TextStyle
         )
     }
 
+val screenTitle: TextStyle
+    @Composable
+    get() {
+        return TextStyle(
+            fontWeight = FontWeight.Normal,
+            fontSize = 22.sp,
+            letterSpacing = 0.15.sp
+        )
+    }
+
 val priceTypo: TextStyle
     @Composable
     get() {

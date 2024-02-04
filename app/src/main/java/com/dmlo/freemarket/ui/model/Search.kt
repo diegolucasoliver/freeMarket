@@ -7,10 +7,10 @@ import com.dmlo.freemarket.data.model.SearchResponse
 import java.math.BigDecimal
 
 class Search(
-    val siteId: String,
-    val query: String?,
-    val paging: Paging,
-    val results: List<Product>
+    val siteId: String = "",
+    val query: String? = null,
+    val paging: Paging = Paging(),
+    val results: List<Product> = emptyList()
 ) {
     constructor(response: SearchResponse) : this(
         siteId = response.siteId,
@@ -21,10 +21,10 @@ class Search(
 }
 
 class Paging(
-    val total: Int,
-    val offset: Int,
-    val limit: Int,
-    val primaryResults: Int
+    val total: Int = 0,
+    val offset: Int = 0,
+    val limit: Int = 0,
+    val primaryResults: Int = 0
 ) {
     constructor(response: PagingResponse) : this(
         total = response.total,
@@ -62,7 +62,7 @@ class Product(
 
 class Installment(
     val quantity: Int,
-    val rate: Int,
+    val rate: Double,
     val amount: BigDecimal,
     val currencyId: String
 ) {

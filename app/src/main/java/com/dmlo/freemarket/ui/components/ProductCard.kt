@@ -19,7 +19,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.dmlo.freemarket.R
-import com.dmlo.freemarket.utils.formatToMoney
 import com.dmlo.freemarket.ui.model.Installment
 import com.dmlo.freemarket.ui.model.Product
 import com.dmlo.freemarket.ui.theme.FreeMarketTheme
@@ -29,6 +28,7 @@ import com.dmlo.freemarket.ui.theme.installmentTypo
 import com.dmlo.freemarket.ui.theme.originalPriceTypo
 import com.dmlo.freemarket.ui.theme.priceTypo
 import com.dmlo.freemarket.ui.theme.tagTypo
+import com.dmlo.freemarket.utils.formatToMoney
 import java.math.BigDecimal
 
 private const val NEW = "new"
@@ -76,7 +76,7 @@ fun ProductCard(
 
             product.installments?.let { installment ->
                 Text(
-                    modifier = Modifier.padding(bottom = 12.dp, start = 16.dp, end = 16.dp),
+                    modifier = Modifier.padding(horizontal = 16.dp),
                     text = stringResource(
                         id = R.string.installment_condition,
                         installment.quantity,
@@ -100,7 +100,7 @@ fun ProductCard(
 @Composable
 fun Tags(freeShipping: Boolean, condition: String, quantity: Int) {
     Row(
-        modifier = Modifier.padding(bottom = 12.dp, start = 16.dp, end = 16.dp)
+        modifier = Modifier.padding(16.dp)
     ) {
         if (freeShipping) {
             Tag(
@@ -161,7 +161,7 @@ fun ProductCardPreview() {
                 installments = Installment(
                     quantity = 10,
                     amount = BigDecimal("119.9"),
-                    rate = 0,
+                    rate = 0.0,
                     currencyId = "BRL"
                 ),
                 freeShipping = true

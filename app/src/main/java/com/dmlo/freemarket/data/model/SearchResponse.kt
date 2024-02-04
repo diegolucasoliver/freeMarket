@@ -32,7 +32,7 @@ class ProductResponse(
 
 class InstallmentResponse(
     @SerializedName("quantity") val quantity: Int,
-    @SerializedName("rate") val rate: Int,
+    @SerializedName("rate") val rate: Double,
     @SerializedName("amount") val amount: BigDecimal,
     @SerializedName("currency_id") val currencyId: String
 )

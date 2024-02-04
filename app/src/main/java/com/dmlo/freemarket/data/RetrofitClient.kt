@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit
 private const val BASE_URL = "https://api.mercadolibre.com"
 object RetrofitClient {
 
-    private val gson by lazy { KoinPlatformTools.defaultContext().get().get<Gson>() }
+    private val gson = Gson()
 
     private fun initRetrofit() =
         Retrofit.Builder()

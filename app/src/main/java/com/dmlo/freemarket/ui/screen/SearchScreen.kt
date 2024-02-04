@@ -7,12 +7,12 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -23,7 +23,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -36,17 +38,18 @@ import com.dmlo.freemarket.ui.theme.FreeMarketTheme
 @Composable
 fun SearchScreen(navController: NavController) {
 
+    val keyboardController = LocalSoftwareKeyboardController.current
+
     Scaffold(
+        modifier = Modifier.background(Color.LightGray),
         topBar = {
             CustomTopAppBar(
-                title = { Text(text = "Free Market") },
-                backgroundColor = MaterialTheme.colorScheme.secondary
+                title = { Text(text = "Free Market") }
             )
         }
     ) {
         Column(
             modifier = Modifier
-                .background(color = MaterialTheme.colorScheme.secondary)
                 .padding(horizontal = 16.dp)
                 .fillMaxSize(),
             verticalArrangement = Arrangement.Center
@@ -57,8 +60,13 @@ fun SearchScreen(navController: NavController) {
                 value = item,
                 onValueChange = { item = it },
                 label = { Text(text = "Digite aqui o que busca") },
-                textStyle = TextStyle(color = Color.White),
+                textStyle = TextStyle(color = Color.Black),
                 maxLines = 1,
+                keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
+                keyboardActions = KeyboardActions(onDone = {
+                    navController.navigate(Screen.Results.withArgs(item))
+                    keyboardController?.hide()
+                }),
                 trailingIcon = {
                     IconButton(onClick = { navController.navigate(Screen.Results.withArgs(item)) }) {
                         Icon(

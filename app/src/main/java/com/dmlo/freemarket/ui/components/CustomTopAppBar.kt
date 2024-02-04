@@ -20,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.unit.dp
+import com.dmlo.freemarket.ui.theme.screenTitle
 
 @Composable
 fun CustomTopAppBar(
@@ -53,10 +54,9 @@ fun CustomTopAppBar(
             Modifier
                 .fillMaxHeight()
                 .weight(1f),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            ProvideTextStyle(value = MaterialTheme.typography.headlineMedium) {
+            ProvideTextStyle(value = screenTitle) {
                 CompositionLocalProvider(
                     value = LocalContentColor provides MaterialTheme.colorScheme.onSurface,
                     content = title

@@ -6,6 +6,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.dmlo.freemarket.ui.MainViewModel
+import com.dmlo.freemarket.ui.screen.ResultsScreen
 import com.dmlo.freemarket.ui.screen.SearchScreen
 
 private const val QUERY = "query"
@@ -25,7 +27,7 @@ sealed class Screen(val route: String) {
 }
 
 @Composable
-fun Navigation() {
+fun Navigation(viewModel: MainViewModel) {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = Screen.Search.route) {
 
@@ -41,7 +43,13 @@ fun Navigation() {
                 }
             )
         ) { entry ->
-            val query = entry.arguments?.getString(QUERY)
+            val query = entry.arguments?.getString(QUERY).orEmpty()
+
+            ResultsScreen(
+                navController = navController,
+                query = query,
+                viewModel = viewModel
+            )
         }
 
         composable(

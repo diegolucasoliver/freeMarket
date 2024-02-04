@@ -5,17 +5,18 @@ import com.dmlo.freemarket.data.model.SearchResponse
 import kotlinx.coroutines.flow.Flow
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface Api {
 
-    @GET("/sites/{site_id}/search?q={product}")
-    abstract fun getProducts(
+    @GET("/sites/{site_id}/search")
+    suspend fun getItems(
         @Path("site_id") siteId: String,
-        @Path("product") product: String
-    ) : Flow<SearchResponse>
+        @Query("q") product: String
+    ) : SearchResponse
 
     @GET("/items/{item_id}/description")
-    abstract fun getProductDescription(
+    suspend fun getProductDescription(
         @Path("item_id") itemId: String
-    ) : Flow<ProductDescriptionResponse>
+    ) : ProductDescriptionResponse
 }
